@@ -26,7 +26,7 @@ class Event(Cog_extension):
     async def on_message(self, msg):
         if msg.content in jdata["KEYWORD"] and msg.author != self.bot.user:
             await msg.channel.send("hi")
-        pic = discord.File("C:\\Users\\Kayne\\Desktop\\Cool_Bot\\cmds\\cool_pictures\\2021-09-26_1.27.46.png")
+        pic = discord.File("C:\\Users\\Kayne\\Desktop\\Discord_Bot\\cmds\\cool_pictures\\2021-09-26_1.27.46.png")
         if msg.content.endswith("JACK"):
             await msg.channel.send(file = pic)
 
