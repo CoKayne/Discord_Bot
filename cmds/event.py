@@ -10,7 +10,7 @@ from core.classes import Cog_extension
 with open("setting.json", "r", encoding = "utf8") as jfile:
     jdata = json.load(jfile)
 
-class Event(Cog_extension):
+class Event(Cog_extension): #just testing
 
     @commands.Cog.listener() #welcome message send to sever
     async def on_member_join(self, member):
