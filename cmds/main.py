@@ -65,6 +65,7 @@ class Main(Cog_extension):
     @commands.command() #class_squad
     async def class_squad(self, ctx):
         people = jdata["CSDC"]
+        backup = [] 
         for squad in range(8):
             a = random.sample(people, k=3)
             nonochars = "[]'" #去掉的chars
@@ -76,7 +77,8 @@ class Main(Cog_extension):
             await ctx.send(embed=embed) #輸出
             for name in a:
                 people.remove(name) #不要重複選
-            
+                backup.append(name)
+        people.extend(backup)
 
     @commands.group()
     async def codetest(self, ctx):
