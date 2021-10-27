@@ -47,20 +47,21 @@ class Main(Cog_extension):
         for member in ctx.guild.members:
             if str(member.status) == "online" and member.bot == False:
                 online.append(member.name)
-
-        random_online = random.sample(online, k = 1) #幾個人分組
-
-        for squad in range(1): #分幾組
-            a = random.sample(random_online, k = 1) #一組幾個人
-            nonochars = "[]'" #去掉的chars
-            stringa = str(a)  #str(a)
-            for chars in nonochars:
-                stringa = stringa.replace(chars,"")
-            embed=discord.Embed(title="分組", description="各組分組結果", color=0xf0ac19)
-            embed.add_field(name=(f"Group {squad+1} "), value=stringa, inline=False)
-            await ctx.send(embed=embed) #輸出
-            for name in a:
-                random_online.remove(name) #不要重複選
+        if online:
+            random_online = random.sample(online, k = 1) #幾個人分組
+            for squad in range(1): #分幾組
+                a = random.sample(random_online, k = 1) #一組幾個人
+                nonochars = "[]'" #去掉的chars
+                stringa = str(a)  #str(a)
+                for chars in nonochars:
+                    stringa = stringa.replace(chars,"")
+                embed=discord.Embed(title="分組", description="各組分組結果", color=0xf0ac19)
+                embed.add_field(name=(f"Group {squad+1} "), value=stringa, inline=False)
+                await ctx.send(embed=embed) #輸出
+                for name in a:
+                    random_online.remove(name) #不要重複選
+        else:
+            await ctx.send("No members online!")
     
     @commands.command() #class_squad
     async def class_squad(self, ctx):

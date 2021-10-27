@@ -31,5 +31,10 @@ class React(Cog_extension):
             await name.send("Go eat")
             await ctx.send(name)
 
+    @commands.command()
+    async def div(self, ctx):
+        divider = str(jdata["DIVIDER"])
+        await ctx.send(divider[2:79])
+
 def setup(bot):
     bot.add_cog(React(bot))
