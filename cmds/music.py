@@ -30,6 +30,8 @@ class Music(Cog_extension): #just testing
 
     @commands.command()
     async def play(self, ctx, url):
+        if ctx.voice_client.is_playing():
+            await ctx.send("Switched songs!")
         ctx.voice_client.stop()
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options':'-vn'}
         YDL_OPTIONS = {'format':'bestaudio'}
@@ -42,13 +44,13 @@ class Music(Cog_extension): #just testing
 
     @commands.command()
     async def pause(self, ctx):
-        await ctx.voice_client.pause()
-        await ctx.send("Music Paused")
+        ctx.voice_client.pause()
+        await ctx.send("Paused ⏸")
 
     @commands.command()
     async def resume(self, ctx):
-        await ctx.voice_client.resume()
-        await ctx.send("Music Resumed")
+        ctx.voice_client.resume()
+        await ctx.send("Resumed ▶")
 
 def setup(bot):
     bot.add_cog(Music(bot))

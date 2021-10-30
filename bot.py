@@ -10,7 +10,7 @@ intents = discord.Intents.all()
 with open("setting.json", "r", encoding = "utf8") as jfile:
     jdata = json.load(jfile)
 
-bot = commands.Bot(command_prefix=";", intents = intents)
+bot = commands.Bot(command_prefix="-", intents = intents)
 
 class MyHelpCommand(commands.MinimalHelpCommand): #make help embed
     async def send_pages(self):

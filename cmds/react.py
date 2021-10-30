@@ -4,6 +4,7 @@ import json
 import random
 from discord import channel
 from discord.ext import commands
+from emoji import emojize
 intents = discord.Intents.all()
 from core.classes import Cog_extension
 
@@ -33,8 +34,13 @@ class React(Cog_extension):
 
     @commands.command()
     async def div(self, ctx):
+        await ctx.message.delete()
         divider = str(jdata["DIVIDER"])
         await ctx.send(divider[2:79])
+
+    @commands.command()
+    async def semo(self, ctx):
+        await ctx.send(emojize(":clock1:"))
 
 def setup(bot):
     bot.add_cog(React(bot))
