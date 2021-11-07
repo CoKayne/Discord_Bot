@@ -25,7 +25,7 @@ class Music(Cog_extension): #just testing
             await ctx.voice_client.move_to(voice_channel)
     
     @commands.command()
-    async def dis(self, ctx):
+    async def leave(self, ctx):
         await ctx.voice_client.disconnect()
 
     @commands.command()
